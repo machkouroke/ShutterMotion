@@ -320,7 +320,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     SvgPicture.asset(
-                                      'assets/images/sun.svg',
+                                      'assets/images/sun_(1).svg',
                                       width: 80.0,
                                       height: 80.0,
                                       fit: BoxFit.cover,
