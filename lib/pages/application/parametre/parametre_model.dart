@@ -1,11 +1,15 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'calorie_tracker_widget.dart' show CalorieTrackerWidget;
+import 'parametre_widget.dart' show ParametreWidget;
 import 'package:flutter/material.dart';
 
-class CalorieTrackerModel extends FlutterFlowModel<CalorieTrackerWidget> {
+class ParametreModel extends FlutterFlowModel<ParametreWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -15,6 +19,8 @@ class CalorieTrackerModel extends FlutterFlowModel<CalorieTrackerWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

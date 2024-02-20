@@ -89,49 +89,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const InfoWidget(),
             ),
             FFRoute(
-              name: 'WeightTracker',
-              path: 'weightTracker',
-              builder: (context, params) => const WeightTrackerWidget(),
-            ),
-            FFRoute(
-              name: 'StepsTracker',
-              path: 'stepsTracker',
-              builder: (context, params) => const StepsTrackerWidget(),
-            ),
-            FFRoute(
-              name: 'FoodJournal',
-              path: 'foodJournal',
-              builder: (context, params) => const FoodJournalWidget(),
-            ),
-            FFRoute(
-              name: 'EventsPage',
-              path: 'eventsPage',
-              builder: (context, params) => const EventsPageWidget(),
-            ),
-            FFRoute(
-              name: 'EventDetails',
-              path: 'eventDetails',
-              builder: (context, params) => const EventDetailsWidget(),
-            ),
-            FFRoute(
-              name: 'ProfilePage',
-              path: 'profilePage',
-              builder: (context, params) => const ProfilePageWidget(),
-            ),
-            FFRoute(
-              name: 'WaterTracker',
-              path: 'waterTracker',
-              builder: (context, params) => const WaterTrackerWidget(),
-            ),
-            FFRoute(
-              name: 'CalorieTracker',
-              path: 'calorieTracker',
-              builder: (context, params) => const CalorieTrackerWidget(),
-            ),
-            FFRoute(
-              name: 'FoodNutrients',
-              path: 'foodNutrients',
-              builder: (context, params) => const FoodNutrientsWidget(),
+              name: 'Parametre',
+              path: 'parametre',
+              builder: (context, params) => const ParametreWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
