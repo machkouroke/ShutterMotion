@@ -157,7 +157,7 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(84.0, 12.0, 84.0, 0.0),
                       child: Text(
-                        'Quelle est pour vous la température seuil',
+                        'Quelle est pour vous la température seuil idéal?',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Rubik',
@@ -177,8 +177,9 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SvgPicture.asset(
-                        'assets/images/working_out.svg',
-                        height: 144.0,
+                        'assets/images/thermometer-svgrepo-com.svg',
+                        width: 150.0,
+                        height: 150.0,
                         fit: BoxFit.cover,
                       ).animateOnPageLoad(
                           animationsMap['imageOnPageLoadAnimation']!),
@@ -274,7 +275,11 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '120',
+                                    formatNumber(
+                                      FFAppState().tempSeuil,
+                                      formatType: FormatType.decimal,
+                                      decimalType: DecimalType.automatic,
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -311,12 +316,16 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                     FlutterFlowTheme.of(context).primary,
                                 min: -70.0,
                                 max: 70.0,
-                                value: _model.sliderValue ??= -30.0,
+                                value: _model.sliderValue ??= 0.0,
                                 label: _model.sliderValue.toString(),
-                                onChanged: (newValue) {
+                                onChanged: (newValue) async {
                                   newValue =
                                       double.parse(newValue.toStringAsFixed(6));
                                   setState(() => _model.sliderValue = newValue);
+                                  setState(() {
+                                    FFAppState().tempSeuil =
+                                        _model.sliderValue!;
+                                  });
                                 },
                               ),
                             ),

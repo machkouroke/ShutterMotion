@@ -27,8 +27,7 @@ class _ParametreWidgetState extends State<ParametreWidget> {
     super.initState();
     _model = createModel(context, () => ParametreModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -770,136 +769,46 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                               alignment:
                                                                   const AlignmentDirectional(
                                                                       0.0, 0.0),
-                                                              child:
-                                                                  TextFormField(
-                                                                controller: _model
-                                                                    .textController,
-                                                                focusNode: _model
-                                                                    .textFieldFocusNode,
-                                                                obscureText:
-                                                                    false,
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  hintText:
-                                                                      'Saissisez la température',
-                                                                  hintStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Rubik',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                      ),
-                                                                  enabledBorder:
-                                                                      const UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  SliderTheme(
+                                                                    data:
+                                                                        const SliderThemeData(
+                                                                      showValueIndicator:
+                                                                          ShowValueIndicator
+                                                                              .always,
                                                                     ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
+                                                                    child:
+                                                                        Slider(
+                                                                      activeColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .customColor3,
+                                                                      inactiveColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .primary,
+                                                                      min:
+                                                                          -70.0,
+                                                                      max: 70.0,
+                                                                      value: _model
+                                                                              .sliderValue ??=
+                                                                          -30.0,
+                                                                      label: _model
+                                                                          .sliderValue
+                                                                          .toString(),
+                                                                      onChanged:
+                                                                          (newValue) {
+                                                                        newValue =
+                                                                            double.parse(newValue.toStringAsFixed(6));
+                                                                        setState(() =>
+                                                                            _model.sliderValue =
+                                                                                newValue);
+                                                                      },
                                                                     ),
                                                                   ),
-                                                                  focusedBorder:
-                                                                      const UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  errorBorder:
-                                                                      const UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  focusedErrorBorder:
-                                                                      const UnderlineInputBorder(
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: Color(
-                                                                          0x00000000),
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .only(
-                                                                      topLeft: Radius
-                                                                          .circular(
-                                                                              4.0),
-                                                                      topRight:
-                                                                          Radius.circular(
-                                                                              4.0),
-                                                                    ),
-                                                                  ),
-                                                                  contentPadding:
-                                                                      const EdgeInsetsDirectional.fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Rubik',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
-                                                                keyboardType:
-                                                                    TextInputType
-                                                                        .number,
-                                                                validator: _model
-                                                                    .textControllerValidator
-                                                                    .asValidator(
-                                                                        context),
+                                                                ],
                                                               ),
                                                             ),
                                                           ),

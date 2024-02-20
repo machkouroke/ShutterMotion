@@ -6,10 +6,8 @@ class ParametreModel extends FlutterFlowModel<ParametreWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // State field(s) for Slider widget.
+  double? sliderValue;
 
   /// Initialization and disposal methods.
 
@@ -19,8 +17,6 @@ class ParametreModel extends FlutterFlowModel<ParametreWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
   }
 
   /// Action blocks are added here.

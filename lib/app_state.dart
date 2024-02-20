@@ -24,6 +24,9 @@ class FFAppState extends ChangeNotifier {
       _yAxis =
           prefs.getStringList('ff_yAxis')?.map(double.parse).toList() ?? _yAxis;
     });
+    _safeInit(() {
+      _tempSeuil = prefs.getDouble('ff_tempSeuil') ?? _tempSeuil;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -101,6 +104,13 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInYAxis(int index, double value) {
     _yAxis.insert(index, value);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
+  }
+
+  double _tempSeuil = 20.0;
+  double get tempSeuil => _tempSeuil;
+  set tempSeuil(double value) {
+    _tempSeuil = value;
+    prefs.setDouble('ff_tempSeuil', value);
   }
 }
 
