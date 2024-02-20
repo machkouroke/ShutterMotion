@@ -24,6 +24,7 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
   late TempSeuilModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   final animationsMap = {
     'imageOnPageLoadAnimation': AnimationInfo(
@@ -305,29 +306,24 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                 ],
                               ),
                             ),
-                            SliderTheme(
-                              data: const SliderThemeData(
-                                showValueIndicator: ShowValueIndicator.always,
-                              ),
-                              child: Slider(
-                                activeColor:
-                                    FlutterFlowTheme.of(context).customColor3,
-                                inactiveColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                min: -70.0,
-                                max: 70.0,
-                                value: _model.sliderValue ??= 0.0,
-                                label: _model.sliderValue.toString(),
-                                onChanged: (newValue) async {
-                                  newValue =
-                                      double.parse(newValue.toStringAsFixed(6));
-                                  setState(() => _model.sliderValue = newValue);
-                                  setState(() {
-                                    FFAppState().tempSeuil =
-                                        _model.sliderValue!;
-                                  });
-                                },
-                              ),
+                            Slider(
+                              activeColor:
+                                  FlutterFlowTheme.of(context).customColor3,
+                              inactiveColor:
+                                  FlutterFlowTheme.of(context).primary,
+                              min: -70.0,
+                              max: 70.0,
+                              value: _model.sliderValue ??= 20.0,
+                              label: _model.sliderValue.toString(),
+                              divisions: 140,
+                              onChanged: (newValue) async {
+                                newValue =
+                                    double.parse(newValue.toStringAsFixed(6));
+                                setState(() => _model.sliderValue = newValue);
+                                setState(() {
+                                  FFAppState().tempSeuil = _model.sliderValue!;
+                                });
+                              },
                             ),
                           ],
                         ),
@@ -340,6 +336,9 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                 padding: const EdgeInsetsDirectional.fromSTEB(72.0, 0.0, 72.0, 60.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    currentUserLocationValue = await getCurrentUserLocation(
+                        defaultLocation: const LatLng(0.0, 0.0));
+
                     context.pushNamed(
                       'HomePage',
                       extra: <String, dynamic>{
@@ -349,6 +348,8 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                         ),
                       },
                     );
+
+                    FFAppState().location = currentUserLocationValue;
                   },
                   text: 'Finir',
                   options: FFButtonOptions(
