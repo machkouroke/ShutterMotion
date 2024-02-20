@@ -185,7 +185,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('ProfilePage');
+                                  context.pushNamed('Parametre');
                                 },
                                 child: Container(
                                   width: 48.0,
@@ -844,7 +844,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           BorderRadius.circular(
                                                               8.0),
                                                       child: SvgPicture.asset(
-                                                        'assets/images/wind-svg-svgrepo-com.svg',
+                                                        'assets/images/drops-humidity-svgrepo-com.svg',
                                                         width: 30.0,
                                                         height: 30.0,
                                                         fit: BoxFit.cover,
@@ -881,7 +881,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ),
                                                           ),
                                                           Text(
-                                                            '0.2 km/h',
+                                                            '30%',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
