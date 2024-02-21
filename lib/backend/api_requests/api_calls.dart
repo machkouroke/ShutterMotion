@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -18,6 +19,8 @@ class GetWeatherDataCall {
   Future<ApiCallResponse> call({
     double? latitude = 0,
     double? longitude = 0,
+    String? temperatureUnit = 'celsius',
+    String? windSpeedUnit = 'kmh',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'Get weather data',
@@ -27,7 +30,12 @@ class GetWeatherDataCall {
       params: {
         'latitude': latitude,
         'longitude': longitude,
-        'current': "temperature_2m,relative_humidity_2m,is_day",
+        'current':
+            "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,wind_speed_10m",
+        'forecast_days': 1,
+        'daily': "sunrise,sunset,uv_index_max",
+        'temperature_unit': temperatureUnit,
+        'wind_speed_unit': windSpeedUnit,
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -36,6 +44,35 @@ class GetWeatherDataCall {
       alwaysAllowBody: false,
     );
   }
+
+  double? temperature(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.current.temperature_2m''',
+      ));
+  int? isday(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.current.is_day''',
+      ));
+  double? humidity(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.current.relative_humidity_2m''',
+      ));
+  String? sunrise(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.daily.sunrise[0]''',
+      ));
+  String? sunset(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.daily.sunset[0]''',
+      ));
+  double? windspeed(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.current.wind_speed_10m''',
+      ));
+  double? indiceuv(dynamic response) => castToType<double>(getJsonField(
+        response,
+        r'''$.daily.uv_index_max[0]''',
+      ));
 }
 
 /// End Open Meteo Group Code

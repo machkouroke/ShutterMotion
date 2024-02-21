@@ -2,6 +2,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/backend/schema/structs/index.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -138,6 +140,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
       _model.weatherData = await OpenMeteoGroup.getWeatherDataCall.call(
         latitude: FFAppState().userLocation.latitude,
         longitude: FFAppState().userLocation.longitude,
+      );
+      await actions.getWeather(
+        WeatherResponseStruct.maybeFromMap(
+            (_model.weatherData?.jsonBody ?? ''))!,
       );
     });
   }

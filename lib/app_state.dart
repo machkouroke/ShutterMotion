@@ -40,6 +40,18 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_weatherData') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_weatherData') ?? '{}';
+          _weatherData = WeatherResponseStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -88,6 +100,24 @@ class FFAppState extends ChangeNotifier {
   void updateUserLocationStruct(Function(LocationStruct) updateFn) {
     updateFn(_userLocation);
     secureStorage.setString('ff_userLocation', _userLocation.serialize());
+  }
+
+  WeatherResponseStruct _weatherData =
+      WeatherResponseStruct.fromSerializableMap(jsonDecode(
+          '{"temperature":"0","isday":"0","humidity":"0","sunrise":"19:00","sunset":"19:00","windspeed":"0","indiceuv":"0"}'));
+  WeatherResponseStruct get weatherData => _weatherData;
+  set weatherData(WeatherResponseStruct value) {
+    _weatherData = value;
+    secureStorage.setString('ff_weatherData', value.serialize());
+  }
+
+  void deleteWeatherData() {
+    secureStorage.delete(key: 'ff_weatherData');
+  }
+
+  void updateWeatherDataStruct(Function(WeatherResponseStruct) updateFn) {
+    updateFn(_weatherData);
+    secureStorage.setString('ff_weatherData', _weatherData.serialize());
   }
 }
 
