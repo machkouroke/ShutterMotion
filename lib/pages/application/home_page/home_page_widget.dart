@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -259,7 +260,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           6.0, 0.0, 0.0, 0.0),
                                       child: Text(
-                                        'Mardi 20 Février 2024',
+                                        valueOrDefault<String>(
+                                          functions.getDate(),
+                                          '0',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -881,7 +885,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ),
                                                           ),
                                                           Text(
-                                                            '3',
+                                                            valueOrDefault<
+                                                                String>(
+                                                              OpenMeteoGroup
+                                                                  .getWeatherDataCall
+                                                                  .indiceuv(
+                                                                    homePageGetWeatherDataResponse
+                                                                        .jsonBody,
+                                                                  )
+                                                                  ?.toString(),
+                                                              '0',
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -986,16 +1000,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 text: TextSpan(
                                                                   children: [
                                                                     TextSpan(
-                                                                      text:
-                                                                          formatNumber(
+                                                                      text: valueOrDefault<
+                                                                          String>(
                                                                         OpenMeteoGroup
                                                                             .getWeatherDataCall
                                                                             .humidity(
-                                                                          homePageGetWeatherDataResponse
-                                                                              .jsonBody,
-                                                                        ),
-                                                                        formatType:
-                                                                            FormatType.percent,
+                                                                              homePageGetWeatherDataResponse.jsonBody,
+                                                                            )
+                                                                            ?.toString(),
+                                                                        '0',
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -1008,6 +1021,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                             fontWeight:
                                                                                 FontWeight.normal,
                                                                           ),
+                                                                    ),
+                                                                    const TextSpan(
+                                                                      text:
+                                                                          ' %',
+                                                                      style:
+                                                                          TextStyle(),
                                                                     )
                                                                   ],
                                                                   style: FlutterFlowTheme.of(
@@ -1233,7 +1252,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     ),
                                                               ),
                                                               Text(
-                                                                '07:00',
+                                                                functions.dateToHour(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                  OpenMeteoGroup
+                                                                      .getWeatherDataCall
+                                                                      .sunrise(
+                                                                    homePageGetWeatherDataResponse
+                                                                        .jsonBody,
+                                                                  ),
+                                                                  '0',
+                                                                )),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1322,7 +1351,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     ),
                                                               ),
                                                               Text(
-                                                                '18:00',
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  functions.dateToHour(
+                                                                      OpenMeteoGroup
+                                                                          .getWeatherDataCall
+                                                                          .sunset(
+                                                                    homePageGetWeatherDataResponse
+                                                                        .jsonBody,
+                                                                  )!),
+                                                                  '0',
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
