@@ -942,30 +942,50 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                               .w900,
                                                                     ),
                                                               ),
-                                                              Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  OpenMeteoGroup
-                                                                      .getWeatherDataCall
-                                                                      .humidity(
-                                                                        homePageGetWeatherDataResponse
-                                                                            .jsonBody,
-                                                                      )
-                                                                      ?.toString(),
-                                                                  '0',
+                                                              RichText(
+                                                                textScaleFactor:
+                                                                    MediaQuery.of(
+                                                                            context)
+                                                                        .textScaleFactor,
+                                                                text: TextSpan(
+                                                                  children: [
+                                                                    TextSpan(
+                                                                      text:
+                                                                          formatNumber(
+                                                                        OpenMeteoGroup
+                                                                            .getWeatherDataCall
+                                                                            .humidity(
+                                                                          homePageGetWeatherDataResponse
+                                                                              .jsonBody,
+                                                                        ),
+                                                                        formatType:
+                                                                            FormatType.percent,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Rubik',
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            fontWeight:
+                                                                                FontWeight.normal,
+                                                                          ),
+                                                                    )
+                                                                  ],
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Rubik',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        fontWeight:
+                                                                            FontWeight.normal,
+                                                                      ),
                                                                 ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Rubik',
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .normal,
-                                                                    ),
                                                               ),
                                                             ],
                                                           ),
