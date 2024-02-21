@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -350,6 +351,18 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                     );
 
                     FFAppState().location = currentUserLocationValue;
+                    _model.coords = await actions.getCoords(
+                      FFAppState().location!,
+                    );
+                    FFAppState().update(() {
+                      FFAppState().updateUserLocationStruct(
+                        (e) => e
+                          ..latitude = _model.coords?.first
+                          ..longitude = _model.coords?.last,
+                      );
+                    });
+
+                    setState(() {});
                   },
                   text: 'Finir',
                   options: FFButtonOptions(

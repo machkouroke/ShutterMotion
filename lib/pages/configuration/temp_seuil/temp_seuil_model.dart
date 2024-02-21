@@ -8,6 +8,8 @@ class TempSeuilModel extends FlutterFlowModel<TempSeuilWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for Slider widget.
   double? sliderValue;
+  // Stores action output result for [Custom Action - getCoords] action in Button widget.
+  List<double>? coords;
 
   /// Initialization and disposal methods.
 
