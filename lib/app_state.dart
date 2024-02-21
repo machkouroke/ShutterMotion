@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:csv/csv.dart';
 import 'package:synchronized/synchronized.dart';
@@ -26,6 +27,18 @@ class FFAppState extends ChangeNotifier {
       _location =
           latLngFromString(await secureStorage.getString('ff_location')) ??
               _location;
+    });
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_userLocation') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_userLocation') ?? '{}';
+          _userLocation =
+              LocationStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
     });
   }
 
@@ -58,6 +71,23 @@ class FFAppState extends ChangeNotifier {
 
   void deleteLocation() {
     secureStorage.delete(key: 'ff_location');
+  }
+
+  LocationStruct _userLocation = LocationStruct.fromSerializableMap(
+      jsonDecode('{"latitude":"0","longitude":"0"}'));
+  LocationStruct get userLocation => _userLocation;
+  set userLocation(LocationStruct value) {
+    _userLocation = value;
+    secureStorage.setString('ff_userLocation', value.serialize());
+  }
+
+  void deleteUserLocation() {
+    secureStorage.delete(key: 'ff_userLocation');
+  }
+
+  void updateUserLocationStruct(Function(LocationStruct) updateFn) {
+    updateFn(_userLocation);
+    secureStorage.setString('ff_userLocation', _userLocation.serialize());
   }
 }
 
