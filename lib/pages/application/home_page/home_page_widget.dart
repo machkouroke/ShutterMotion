@@ -27,7 +27,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
+    'imageOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         RotateEffect(
@@ -67,6 +67,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
           duration: 600.ms,
           begin: const Offset(0.0, 20.0),
           end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'imageOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FlipEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 1.0,
+          end: 2.0,
         ),
       ],
     ),
@@ -266,7 +278,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       height: 16.0,
                                       fit: BoxFit.cover,
                                     ).animateOnPageLoad(animationsMap[
-                                        'imageOnPageLoadAnimation']!),
+                                        'imageOnPageLoadAnimation1']!),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           6.0, 0.0, 0.0, 0.0),
@@ -474,7 +486,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           fit: BoxFit.scaleDown,
                                         ),
                                       ),
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'imageOnPageLoadAnimation2']!),
                                   ],
                                 ),
                               ),
@@ -698,7 +711,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             (e) => e
                                                               ..state =
                                                                   ShutterState
-                                                                      .BlackOpened,
+                                                                      .Closed,
                                                           );
                                                         });
                                                       },
