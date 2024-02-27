@@ -275,8 +275,11 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Rubik',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                        color: FFAppState().UserConf.tempUnit ==
+                                                TempUnit.F
+                                            ? FlutterFlowTheme.of(context).white
+                                            : FlutterFlowTheme.of(context)
+                                                .secondary,
                                         fontSize: 14.0,
                                         fontWeight: FontWeight.normal,
                                       ),

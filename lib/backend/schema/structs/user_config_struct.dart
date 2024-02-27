@@ -10,8 +10,10 @@ class UserConfigStruct extends BaseStruct {
   UserConfigStruct({
     TempUnit? tempUnit,
     WindUnit? windUnit,
+    String? selectedShutter,
   })  : _tempUnit = tempUnit,
-        _windUnit = windUnit;
+        _windUnit = windUnit,
+        _selectedShutter = selectedShutter;
 
   // "TempUnit" field.
   TempUnit? _tempUnit;
@@ -25,10 +27,17 @@ class UserConfigStruct extends BaseStruct {
   set windUnit(WindUnit? val) => _windUnit = val;
   bool hasWindUnit() => _windUnit != null;
 
+  // "SelectedShutter" field.
+  String? _selectedShutter;
+  String get selectedShutter => _selectedShutter ?? '';
+  set selectedShutter(String? val) => _selectedShutter = val;
+  bool hasSelectedShutter() => _selectedShutter != null;
+
   static UserConfigStruct fromMap(Map<String, dynamic> data) =>
       UserConfigStruct(
         tempUnit: deserializeEnum<TempUnit>(data['TempUnit']),
         windUnit: deserializeEnum<WindUnit>(data['WindUnit']),
+        selectedShutter: data['SelectedShutter'] as String?,
       );
 
   static UserConfigStruct? maybeFromMap(dynamic data) => data is Map
@@ -38,6 +47,7 @@ class UserConfigStruct extends BaseStruct {
   Map<String, dynamic> toMap() => {
         'TempUnit': _tempUnit?.serialize(),
         'WindUnit': _windUnit?.serialize(),
+        'SelectedShutter': _selectedShutter,
       }.withoutNulls;
 
   @override
@@ -49,6 +59,10 @@ class UserConfigStruct extends BaseStruct {
         'WindUnit': serializeParam(
           _windUnit,
           ParamType.Enum,
+        ),
+        'SelectedShutter': serializeParam(
+          _selectedShutter,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -64,6 +78,11 @@ class UserConfigStruct extends BaseStruct {
           ParamType.Enum,
           false,
         ),
+        selectedShutter: deserializeParam(
+          data['SelectedShutter'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -73,18 +92,22 @@ class UserConfigStruct extends BaseStruct {
   bool operator ==(Object other) {
     return other is UserConfigStruct &&
         tempUnit == other.tempUnit &&
-        windUnit == other.windUnit;
+        windUnit == other.windUnit &&
+        selectedShutter == other.selectedShutter;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([tempUnit, windUnit]);
+  int get hashCode =>
+      const ListEquality().hash([tempUnit, windUnit, selectedShutter]);
 }
 
 UserConfigStruct createUserConfigStruct({
   TempUnit? tempUnit,
   WindUnit? windUnit,
+  String? selectedShutter,
 }) =>
     UserConfigStruct(
       tempUnit: tempUnit,
       windUnit: windUnit,
+      selectedShutter: selectedShutter,
     );

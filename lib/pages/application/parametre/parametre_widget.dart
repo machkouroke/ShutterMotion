@@ -756,47 +756,40 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  SliderTheme(
-                                                                    data:
-                                                                        const SliderThemeData(
-                                                                      showValueIndicator:
-                                                                          ShowValueIndicator
-                                                                              .always,
-                                                                    ),
-                                                                    child:
-                                                                        Slider(
-                                                                      activeColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondary,
-                                                                      inactiveColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                      min:
-                                                                          -70.0,
-                                                                      max: 70.0,
-                                                                      value: _model
-                                                                              .sliderValue ??=
-                                                                          FFAppState()
-                                                                              .tempSeuil,
-                                                                      label: _model
-                                                                          .sliderValue
-                                                                          .toString(),
-                                                                      onChanged:
-                                                                          (newValue) async {
-                                                                        newValue =
-                                                                            double.parse(newValue.toStringAsFixed(6));
-                                                                        setState(() =>
-                                                                            _model.sliderValue =
-                                                                                newValue);
-                                                                        setState(
-                                                                            () {
-                                                                          FFAppState().tempSeuil =
-                                                                              _model.sliderValue!;
-                                                                        });
-                                                                        HapticFeedback
-                                                                            .selectionClick();
-                                                                      },
-                                                                    ),
+                                                                  Slider(
+                                                                    activeColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondary,
+                                                                    inactiveColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    min: -70.0,
+                                                                    max: 70.0,
+                                                                    value: _model
+                                                                            .sliderValue ??=
+                                                                        FFAppState()
+                                                                            .tempSeuil,
+                                                                    label: _model
+                                                                        .sliderValue
+                                                                        .toString(),
+                                                                    divisions:
+                                                                        140,
+                                                                    onChanged:
+                                                                        (newValue) async {
+                                                                      newValue =
+                                                                          double.parse(
+                                                                              newValue.toStringAsFixed(6));
+                                                                      setState(() =>
+                                                                          _model.sliderValue =
+                                                                              newValue);
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState().tempSeuil =
+                                                                            _model.sliderValue!;
+                                                                      });
+                                                                      HapticFeedback
+                                                                          .selectionClick();
+                                                                    },
                                                                   ),
                                                                 ],
                                                               ),

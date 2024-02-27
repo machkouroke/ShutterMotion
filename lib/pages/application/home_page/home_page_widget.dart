@@ -292,7 +292,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Rubik',
-                                              color: const Color(0xFF8B80F8),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -307,14 +309,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     textScaleFactor:
                                         MediaQuery.of(context).textScaleFactor,
                                     text: TextSpan(
-                                      children: const [
+                                      children: [
                                         TextSpan(
-                                          text: 'Volet ',
-                                          style: TextStyle(),
-                                        ),
-                                        TextSpan(
-                                          text: 'TMS74',
-                                          style: TextStyle(),
+                                          text: FFAppState()
+                                              .UserConf
+                                              .selectedShutter,
+                                          style: const TextStyle(),
                                         )
                                       ],
                                       style: FlutterFlowTheme.of(context)
