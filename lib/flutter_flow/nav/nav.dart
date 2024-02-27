@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 
 import '/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -34,13 +33,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/logo.svg',
-                    width: MediaQuery.sizeOf(context).width * 0.2,
-                    fit: BoxFit.cover,
-                  ),
+                color: Colors.transparent,
+                child: Image.asset(
+                  'assets/images/logo_shutter.png',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -52,13 +48,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/logo.svg',
-                        width: MediaQuery.sizeOf(context).width * 0.2,
-                        fit: BoxFit.cover,
-                      ),
+                    color: Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/logo_shutter.png',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
@@ -208,6 +201,7 @@ class FFRoute {
         name: name,
         path: path,
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(

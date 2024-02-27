@@ -1,10 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -50,26 +52,26 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
-    'rowOnPageLoadAnimation': AnimationInfo(
+    'containerOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 80.0),
-          end: const Offset(0.0, 0.0),
-        ),
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 200.ms,
+          delay: 1200.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
         ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 1200.ms,
+          duration: 600.ms,
+          begin: const Offset(0.0, 20.0),
+          end: const Offset(0.0, 0.0),
+        ),
       ],
     ),
-    'containerOnPageLoadAnimation1': AnimationInfo(
+    'rowOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         MoveEffect(
@@ -93,6 +95,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
       effects: [
         MoveEffect(
           curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: const Offset(0.0, 80.0),
+          end: const Offset(0.0, 0.0),
+        ),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'containerOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
           begin: const Offset(0.0, 80.0),
@@ -107,7 +128,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation3': AnimationInfo(
+    'containerOnPageLoadAnimation4': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         MoveEffect(
@@ -143,15 +164,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return FutureBuilder<ApiCallResponse>(
@@ -388,6 +400,313 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
+                            24.0, 24.0, 24.0, 24.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: 144.0,
+                                decoration: BoxDecoration(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    alignment: const AlignmentDirectional(0.0, -1.0),
+                                    image: Image.asset(
+                                      'assets/images/2vqf7_',
+                                    ).image,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(24.0),
+                                    topRight: Radius.circular(24.0),
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: CachedNetworkImage(
+                                        fadeInDuration:
+                                            const Duration(milliseconds: 500),
+                                        fadeOutDuration:
+                                            const Duration(milliseconds: 500),
+                                        imageUrl: () {
+                                          if (FFAppState().shutterState.state ==
+                                              ShutterState.WhiteOpened) {
+                                            return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fwhite.svg?alt=media&token=cbfaefbb-a517-48a8-8aeb-7f5be4a0915e';
+                                          } else if (FFAppState()
+                                                  .shutterState
+                                                  .state ==
+                                              ShutterState.BlackOpened) {
+                                            return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fblack.svg?alt=media&token=a3d96f3b-d224-4cb4-9cee-6855c78b4347';
+                                          } else {
+                                            return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fclosed.svg?alt=media&token=eb5e1372-06e0-4d89-b7cf-c1d629c36afc';
+                                          }
+                                        }(),
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                1.0,
+                                        height: 143.0,
+                                        fit: BoxFit.scaleDown,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(24.0),
+                                    bottomRight: Radius.circular(24.0),
+                                    topLeft: Radius.circular(0.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(24.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 0.0),
+                                        child: Text(
+                                          () {
+                                            if (FFAppState()
+                                                    .shutterState
+                                                    .state ==
+                                                ShutterState.WhiteOpened) {
+                                              return 'Face blanche contre le soleil';
+                                            } else if (FFAppState()
+                                                    .shutterState
+                                                    .state ==
+                                                ShutterState.BlackOpened) {
+                                              return 'Face noire contre le soleil';
+                                            } else {
+                                              return 'Volet fermé';
+                                            }
+                                          }(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Rubik',
+                                                fontSize: 16.0,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 6.0, 0.0, 0.0),
+                                        child: Text(
+                                          () {
+                                            if (FFAppState()
+                                                    .shutterState
+                                                    .state ==
+                                                ShutterState.WhiteOpened) {
+                                              return 'En étant face au soleil les faces blanches permettent d\'isoler la chaleur du soleil';
+                                            } else if (FFAppState()
+                                                    .shutterState
+                                                    .state ==
+                                                ShutterState.BlackOpened) {
+                                              return 'En étant face au soleil les faces blanches permettent d\'absorber la chaleur du soleil';
+                                            } else {
+                                              return 'Bloque tout les rayonnement solaire';
+                                            }
+                                          }(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Rubik',
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 24.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Container(
+                                                  width: 42.0,
+                                                  height: 42.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                  ),
+                                                  child: FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .warning,
+                                                    borderRadius: 20.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .warning,
+                                                    icon: const Icon(
+                                                      FFIcons.kfireSvgrepoCom,
+                                                      color: Color(0xFFF99302),
+                                                      size: 24.0,
+                                                    ),
+                                                    showLoadingIndicator: true,
+                                                    onPressed: () async {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .updateShutterStateStruct(
+                                                          (e) => e
+                                                            ..state =
+                                                                ShutterState
+                                                                    .BlackOpened,
+                                                        );
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          6.0, 0.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 42.0,
+                                                    height: 42.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              14.0),
+                                                    ),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      borderRadius: 20.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 110.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      icon: const Icon(
+                                                        Icons.severe_cold,
+                                                        color:
+                                                            Color(0xFF50A5E6),
+                                                        size: 24.0,
+                                                      ),
+                                                      onPressed: () async {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .updateShutterStateStruct(
+                                                            (e) => e
+                                                              ..state =
+                                                                  ShutterState
+                                                                      .WhiteOpened,
+                                                          );
+                                                        });
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          6.0, 0.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 42.0,
+                                                    height: 42.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              14.0),
+                                                    ),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      borderRadius: 20.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 40.0,
+                                                      fillColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      icon: Icon(
+                                                        Icons
+                                                            .close_fullscreen_sharp,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        size: 24.0,
+                                                      ),
+                                                      showLoadingIndicator:
+                                                          true,
+                                                      onPressed: () async {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .updateShutterStateStruct(
+                                                            (e) => e
+                                                              ..state =
+                                                                  ShutterState
+                                                                      .BlackOpened,
+                                                          );
+                                                        });
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation1']!),
+                      ),
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 24.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -535,7 +854,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                   ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation1']!),
+                                      'containerOnPageLoadAnimation2']!),
                                   Container(
                                     width: 156.0,
                                     height: 216.0,
@@ -630,7 +949,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                   ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation2']!),
+                                      'containerOnPageLoadAnimation3']!),
                                 ],
                               ),
                             ),
@@ -1394,7 +1713,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                           ),
                         ).animateOnPageLoad(
-                            animationsMap['containerOnPageLoadAnimation3']!),
+                            animationsMap['containerOnPageLoadAnimation4']!),
                       ),
                     ],
                   ),

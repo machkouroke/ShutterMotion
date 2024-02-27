@@ -52,6 +52,18 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_shutterState') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_shutterState') ?? '{}';
+          _shutterState =
+              ShutterStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -118,6 +130,23 @@ class FFAppState extends ChangeNotifier {
   void updateWeatherDataStruct(Function(WeatherResponseStruct) updateFn) {
     updateFn(_weatherData);
     secureStorage.setString('ff_weatherData', _weatherData.serialize());
+  }
+
+  ShutterStruct _shutterState =
+      ShutterStruct.fromSerializableMap(jsonDecode('{"State":"Closed"}'));
+  ShutterStruct get shutterState => _shutterState;
+  set shutterState(ShutterStruct value) {
+    _shutterState = value;
+    secureStorage.setString('ff_shutterState', value.serialize());
+  }
+
+  void deleteShutterState() {
+    secureStorage.delete(key: 'ff_shutterState');
+  }
+
+  void updateShutterStateStruct(Function(ShutterStruct) updateFn) {
+    updateFn(_shutterState);
+    secureStorage.setString('ff_shutterState', _shutterState.serialize());
   }
 }
 

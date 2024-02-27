@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 
 import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
@@ -72,6 +73,9 @@ String? serializeParam(
 
       case ParamType.DataStruct:
         return param is BaseStruct ? param.serialize() : null;
+
+      case ParamType.Enum:
+        return (param is Enum) ? param.serialize() : null;
 
       default:
         return null;
@@ -148,6 +152,7 @@ enum ParamType {
   FFUploadedFile,
   JSON,
   DataStruct,
+  Enum,
 }
 
 dynamic deserializeParam<T>(
@@ -208,6 +213,9 @@ dynamic deserializeParam<T>(
       case ParamType.DataStruct:
         final data = json.decode(param) as Map<String, dynamic>? ?? {};
         return structBuilder != null ? structBuilder(data) : null;
+
+      case ParamType.Enum:
+        return deserializeEnum<T>(param);
 
       default:
         return null;

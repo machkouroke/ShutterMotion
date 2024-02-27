@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'bienvenue_model.dart';
 export 'bienvenue_model.dart';
@@ -35,15 +33,6 @@ class _BienvenueWidgetState extends State<BienvenueWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -68,8 +57,8 @@ class _BienvenueWidgetState extends State<BienvenueWidget> {
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                        child: SvgPicture.asset(
-                          'assets/images/logo.svg',
+                        child: Image.asset(
+                          'assets/images/logo_shutter.png',
                           width: 36.0,
                           height: 36.0,
                           fit: BoxFit.contain,
