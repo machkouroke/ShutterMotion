@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -614,6 +615,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .BlackOpened,
                                                         );
                                                       });
+                                                      HapticFeedback
+                                                          .selectionClick();
                                                     },
                                                   ),
                                                 ),
@@ -661,6 +664,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .WhiteOpened,
                                                           );
                                                         });
+                                                        HapticFeedback
+                                                            .selectionClick();
                                                       },
                                                     ),
                                                   ),
@@ -714,6 +719,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .Closed,
                                                           );
                                                         });
+                                                        HapticFeedback
+                                                            .selectionClick();
                                                       },
                                                     ),
                                                   ),
