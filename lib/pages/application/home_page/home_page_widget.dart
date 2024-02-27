@@ -781,7 +781,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     width: 156.0,
                                     height: 216.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFF8B80F8),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Padding(
@@ -826,20 +827,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   animation: true,
                                                   animateFromLastPercent: true,
                                                   progressColor:
-                                                      const Color(0xFF7EE4F0),
+                                                      const Color(0xFF50ABE6),
                                                   backgroundColor:
-                                                      const Color(0x32000000),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
                                                 ),
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: SvgPicture.asset(
-                                                    'assets/images/humidity-svgrepo-com.svg',
-                                                    width: 30.0,
-                                                    height: 30.0,
-                                                    fit: BoxFit.fill,
-                                                  ),
+                                                const Icon(
+                                                  Icons.water_drop,
+                                                  color: Color(0xFF50ABE6),
+                                                  size: 24.0,
                                                 ),
                                               ],
                                             ),
