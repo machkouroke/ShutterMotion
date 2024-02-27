@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
@@ -86,7 +87,7 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                     borderWidth: 1.0,
                     buttonSize: 48.0,
                     icon: const Icon(
-                      Icons.more_vert_outlined,
+                      Icons.settings_sharp,
                       color: Colors.white,
                       size: 24.0,
                     ),
@@ -802,12 +803,19 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                           .sliderValue
                                                                           .toString(),
                                                                       onChanged:
-                                                                          (newValue) {
+                                                                          (newValue) async {
                                                                         newValue =
                                                                             double.parse(newValue.toStringAsFixed(6));
                                                                         setState(() =>
                                                                             _model.sliderValue =
                                                                                 newValue);
+                                                                        setState(
+                                                                            () {
+                                                                          FFAppState().tempSeuil =
+                                                                              _model.sliderValue!;
+                                                                        });
+                                                                        HapticFeedback
+                                                                            .selectionClick();
                                                                       },
                                                                     ),
                                                                   ),
