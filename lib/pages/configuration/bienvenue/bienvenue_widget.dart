@@ -58,7 +58,7 @@ class _BienvenueWidgetState extends State<BienvenueWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                         child: Image.asset(
-                          'assets/images/logo_shutter.png',
+                          'assets/images/window-svgrepo-com.png',
                           width: 36.0,
                           height: 36.0,
                           fit: BoxFit.contain,

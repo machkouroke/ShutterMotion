@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -46,12 +47,32 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
         ),
       ],
     ),
+    'sliderOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: const Offset(0.0, 0.0),
+          end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
   };
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => TempSeuilModel());
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -105,7 +126,7 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                       lineHeight: 8.0,
                       animation: true,
                       animateFromLastPercent: true,
-                      progressColor: const Color(0xFF7165E3),
+                      progressColor: FlutterFlowTheme.of(context).primary,
                       backgroundColor: const Color(0xFFE9E9E9),
                       barRadius: const Radius.circular(12.0),
                       padding: EdgeInsets.zero,
@@ -125,7 +146,7 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Rubik',
-                                  color: const Color(0xFF7165E3),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -299,7 +320,7 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                             ),
                             Slider(
                               activeColor:
-                                  FlutterFlowTheme.of(context).customColor3,
+                                  FlutterFlowTheme.of(context).secondary,
                               inactiveColor:
                                   FlutterFlowTheme.of(context).primary,
                               min: -70.0,
@@ -314,7 +335,10 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                 setState(() {
                                   FFAppState().tempSeuil = _model.sliderValue!;
                                 });
+                                HapticFeedback.selectionClick();
                               },
+                            ).animateOnActionTrigger(
+                              animationsMap['sliderOnActionTriggerAnimation']!,
                             ),
                           ],
                         ),

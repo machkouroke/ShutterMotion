@@ -101,7 +101,7 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                       lineHeight: 8.0,
                       animation: true,
                       animateFromLastPercent: true,
-                      progressColor: const Color(0xFF7165E3),
+                      progressColor: FlutterFlowTheme.of(context).primary,
                       backgroundColor: const Color(0xFFE9E9E9),
                       barRadius: const Radius.circular(12.0),
                       padding: EdgeInsets.zero,
@@ -121,7 +121,7 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Rubik',
-                                  color: const Color(0xFF7165E3),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                 ),

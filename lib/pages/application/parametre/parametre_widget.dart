@@ -186,7 +186,9 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                   animation: true,
                                                   animateFromLastPercent: true,
                                                   progressColor:
-                                                      const Color(0xFF7165E3),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
                                                   backgroundColor:
                                                       const Color(0xFFE9E9E9),
                                                 ),
@@ -384,7 +386,9 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                   animation: true,
                                                   animateFromLastPercent: true,
                                                   progressColor:
-                                                      const Color(0xFF7165E3),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
                                                   backgroundColor:
                                                       const Color(0xFFE9E9E9),
                                                 ),
@@ -687,7 +691,9 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                   animation: true,
                                                   animateFromLastPercent: true,
                                                   progressColor:
-                                                      const Color(0xFF7165E3),
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
                                                   backgroundColor:
                                                       const Color(0xFFE9E9E9),
                                                 ),
@@ -775,7 +781,7 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                         Slider(
                                                                       activeColor:
                                                                           FlutterFlowTheme.of(context)
-                                                                              .customColor3,
+                                                                              .secondary,
                                                                       inactiveColor:
                                                                           FlutterFlowTheme.of(context)
                                                                               .primary,
