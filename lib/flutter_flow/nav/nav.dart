@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 
 import '/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -33,10 +34,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/logo_shutter.png',
-                  fit: BoxFit.contain,
+                color: FlutterFlowTheme.of(context).primary,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/window-svgrepo-com.png',
+                    width: 100.0,
+                    height: 100.0,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             )
@@ -48,10 +53,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Colors.transparent,
-                    child: Image.asset(
-                      'assets/images/logo_shutter.png',
-                      fit: BoxFit.contain,
+                    color: FlutterFlowTheme.of(context).primary,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/window-svgrepo-com.png',
+                        width: 100.0,
+                        height: 100.0,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 )
