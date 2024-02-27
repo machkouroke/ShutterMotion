@@ -437,14 +437,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       tag: () {
                                         if (FFAppState().shutterState.state ==
                                             ShutterState.WhiteOpened) {
-                                          return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fwhite.svg?alt=media&token=cbfaefbb-a517-48a8-8aeb-7f5be4a0915e';
+                                          return 'https://i.ibb.co/gJQXmLB/white.png';
                                         } else if (FFAppState()
                                                 .shutterState
                                                 .state ==
                                             ShutterState.BlackOpened) {
-                                          return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fblack.svg?alt=media&token=a3d96f3b-d224-4cb4-9cee-6855c78b4347';
+                                          return 'https://i.ibb.co/DkfYNC7/black.png';
                                         } else {
-                                          return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fclosed.svg?alt=media&token=eb5e1372-06e0-4d89-b7cf-c1d629c36afc';
+                                          return 'https://i.ibb.co/Q9gPrnn/closed.png';
                                         }
                                       }(),
                                       transitionOnUserGestures: true,
@@ -457,14 +457,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     .shutterState
                                                     .state ==
                                                 ShutterState.WhiteOpened) {
-                                              return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fwhite.svg?alt=media&token=cbfaefbb-a517-48a8-8aeb-7f5be4a0915e';
+                                              return 'https://i.ibb.co/gJQXmLB/white.png';
                                             } else if (FFAppState()
                                                     .shutterState
                                                     .state ==
                                                 ShutterState.BlackOpened) {
-                                              return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fblack.svg?alt=media&token=a3d96f3b-d224-4cb4-9cee-6855c78b4347';
+                                              return 'https://i.ibb.co/DkfYNC7/black.png';
                                             } else {
-                                              return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fclosed.svg?alt=media&token=eb5e1372-06e0-4d89-b7cf-c1d629c36afc';
+                                              return 'https://i.ibb.co/Q9gPrnn/closed.png';
                                             }
                                           }(),
                                           width:
