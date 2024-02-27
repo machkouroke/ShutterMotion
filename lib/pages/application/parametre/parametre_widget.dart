@@ -698,7 +698,13 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                       const Color(0xFFE9E9E9),
                                                 ),
                                                 Text(
-                                                  '15 °C',
+                                                  formatNumber(
+                                                    FFAppState().tempSeuil,
+                                                    formatType:
+                                                        FormatType.custom,
+                                                    format: '##°C',
+                                                    locale: '',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -790,7 +796,8 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                       max: 70.0,
                                                                       value: _model
                                                                               .sliderValue ??=
-                                                                          -30.0,
+                                                                          FFAppState()
+                                                                              .tempSeuil,
                                                                       label: _model
                                                                           .sliderValue
                                                                           .toString(),
