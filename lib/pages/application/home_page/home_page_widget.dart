@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -436,12 +435,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
-                                      child: CachedNetworkImage(
-                                        fadeInDuration:
-                                            const Duration(milliseconds: 500),
-                                        fadeOutDuration:
-                                            const Duration(milliseconds: 500),
-                                        imageUrl: () {
+                                      child: Image.network(
+                                        () {
                                           if (FFAppState().shutterState.state ==
                                               ShutterState.WhiteOpened) {
                                             return 'https://firebasestorage.googleapis.com/v0/b/cesam-website-374720.appspot.com/o/ShutterMotion%2FPicture%2Fwhite.svg?alt=media&token=cbfaefbb-a517-48a8-8aeb-7f5be4a0915e';
