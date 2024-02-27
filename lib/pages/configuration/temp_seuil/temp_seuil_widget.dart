@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -207,8 +208,12 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  setState(() {
+                                    FFAppState().updateUserConfStruct(
+                                      (e) => e..tempUnit = TempUnit.C,
+                                    );
+                                  });
                                 },
                                 text: 'Celcius',
                                 options: FFButtonOptions(
@@ -218,7 +223,10 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).secondary,
+                                  color: FFAppState().UserConf.tempUnit ==
+                                          TempUnit.C
+                                      ? FlutterFlowTheme.of(context).secondary
+                                      : FlutterFlowTheme.of(context).white,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -240,8 +248,12 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  setState(() {
+                                    FFAppState().updateUserConfStruct(
+                                      (e) => e..tempUnit = TempUnit.F,
+                                    );
+                                  });
                                 },
                                 text: 'Fahrenheit',
                                 options: FFButtonOptions(
@@ -251,7 +263,10 @@ class _TempSeuilWidgetState extends State<TempSeuilWidget>
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: Colors.white,
+                                  color: FFAppState().UserConf.tempUnit ==
+                                          TempUnit.F
+                                      ? FlutterFlowTheme.of(context).secondary
+                                      : FlutterFlowTheme.of(context).white,
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(

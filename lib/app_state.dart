@@ -64,6 +64,18 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    await _safeInitAsync(() async {
+      if (await secureStorage.read(key: 'ff_UserConf') != null) {
+        try {
+          final serializedData =
+              await secureStorage.getString('ff_UserConf') ?? '{}';
+          _UserConf =
+              UserConfigStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -147,6 +159,23 @@ class FFAppState extends ChangeNotifier {
   void updateShutterStateStruct(Function(ShutterStruct) updateFn) {
     updateFn(_shutterState);
     secureStorage.setString('ff_shutterState', _shutterState.serialize());
+  }
+
+  UserConfigStruct _UserConf = UserConfigStruct.fromSerializableMap(
+      jsonDecode('{"TempUnit":"C","WindUnit":"kmh"}'));
+  UserConfigStruct get UserConf => _UserConf;
+  set UserConf(UserConfigStruct value) {
+    _UserConf = value;
+    secureStorage.setString('ff_UserConf', value.serialize());
+  }
+
+  void deleteUserConf() {
+    secureStorage.delete(key: 'ff_UserConf');
+  }
+
+  void updateUserConfStruct(Function(UserConfigStruct) updateFn) {
+    updateFn(_UserConf);
+    secureStorage.setString('ff_UserConf', _UserConf.serialize());
   }
 }
 

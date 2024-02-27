@@ -6,6 +6,16 @@ enum ShutterState {
   BlackOpened,
 }
 
+enum TempUnit {
+  C,
+  F,
+}
+
+enum WindUnit {
+  kmh,
+  ms,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -19,6 +29,10 @@ T? deserializeEnum<T>(String? value) {
   switch (T) {
     case (ShutterState):
       return ShutterState.values.deserialize(value) as T?;
+    case (TempUnit):
+      return TempUnit.values.deserialize(value) as T?;
+    case (WindUnit):
+      return WindUnit.values.deserialize(value) as T?;
     default:
       return null;
   }

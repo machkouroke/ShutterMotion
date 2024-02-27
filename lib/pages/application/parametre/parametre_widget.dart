@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -276,18 +277,28 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiary,
+                                                                color: FFAppState().UserConf.tempUnit ==
+                                                                        TempUnit
+                                                                            .C
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .white,
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
                                                                       fontFamily:
                                                                           'Rubik',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                                      color: FFAppState().UserConf.tempUnit ==
+                                                                              TempUnit
+                                                                                  .C
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .white
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .primaryText,
                                                                       fontSize:
                                                                           14.0,
                                                                       fontWeight:
@@ -331,9 +342,16 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .tertiary,
+                                                              color: FFAppState()
+                                                                          .UserConf
+                                                                          .tempUnit ==
+                                                                      TempUnit.F
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .white,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -341,8 +359,10 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Rubik',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
+                                                                        color: FFAppState().UserConf.tempUnit ==
+                                                                                TempUnit.F
+                                                                            ? FlutterFlowTheme.of(context).white
+                                                                            : FlutterFlowTheme.of(context).primaryText,
                                                                         fontSize:
                                                                             14.0,
                                                                         fontWeight:
@@ -483,78 +503,27 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
+                                                                  color: FFAppState()
+                                                                              .UserConf
+                                                                              .windUnit ==
+                                                                          WindUnit
+                                                                              .kmh
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .white,
                                                                   textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
                                                                             'Rubik',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        fontSize:
-                                                                            14.0,
-                                                                        fontWeight:
-                                                                            FontWeight.normal,
-                                                                      ),
-                                                                  elevation:
-                                                                      0.0,
-                                                                  borderSide:
-                                                                      const BorderSide(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    width: 0.0,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              12.0),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child:
-                                                                  FFButtonWidget(
-                                                                onPressed: () {
-                                                                  print(
-                                                                      'Button pressed ...');
-                                                                },
-                                                                text: 'km/h',
-                                                                options:
-                                                                    FFButtonOptions(
-                                                                  height: 42.0,
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          0.0,
-                                                                          24.0,
-                                                                          0.0),
-                                                                  iconPadding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  textStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Rubik',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
+                                                                        color: FFAppState().UserConf.windUnit ==
+                                                                                WindUnit.kmh
+                                                                            ? FlutterFlowTheme.of(context).white
+                                                                            : FlutterFlowTheme.of(context).primaryText,
                                                                         fontSize:
                                                                             14.0,
                                                                         fontWeight:
@@ -597,18 +566,28 @@ class _ParametreWidgetState extends State<ParametreWidget> {
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiary,
+                                                                color: FFAppState().UserConf.windUnit ==
+                                                                        WindUnit
+                                                                            .ms
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .white,
                                                                 textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
                                                                       fontFamily:
                                                                           'Rubik',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                                      color: FFAppState().UserConf.windUnit ==
+                                                                              WindUnit
+                                                                                  .ms
+                                                                          ? FlutterFlowTheme.of(context)
+                                                                              .white
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .primaryText,
                                                                       fontSize:
                                                                           14.0,
                                                                       fontWeight:
