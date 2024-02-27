@@ -1,6 +1,5 @@
 // Export pages
-export '/pages/configuration/bienvenue/bienvenue_widget.dart'
-    show BienvenueWidget;
+export '/pages/bienvenue/bienvenue_widget.dart' show BienvenueWidget;
 export '/pages/application/home_page/home_page_widget.dart' show HomePageWidget;
 export '/pages/configuration/recherche_volet/recherche_volet_widget.dart'
     show RechercheVoletWidget;
