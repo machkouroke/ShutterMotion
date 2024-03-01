@@ -34,7 +34,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: FlutterFlowTheme.of(context).primary,
+                color: FlutterFlowTheme.of(context).white,
                 child: Center(
                   child: Image.asset(
                     'assets/images/window-svgrepo-com.png',
@@ -53,7 +53,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: FlutterFlowTheme.of(context).white,
                     child: Center(
                       child: Image.asset(
                         'assets/images/window-svgrepo-com.png',

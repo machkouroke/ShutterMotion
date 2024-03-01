@@ -504,234 +504,333 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     topRight: Radius.circular(0.0),
                                   ),
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(24.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: Text(
-                                          () {
-                                            if (FFAppState()
-                                                    .shutterState
-                                                    .state ==
-                                                ShutterState.WhiteOpened) {
-                                              return 'Face blanche contre le soleil';
-                                            } else if (FFAppState()
-                                                    .shutterState
-                                                    .state ==
-                                                ShutterState.BlackOpened) {
-                                              return 'Face noire contre le soleil';
-                                            } else {
-                                              return 'Volet fermé';
-                                            }
-                                          }(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Rubik',
-                                                fontSize: 16.0,
-                                              ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: Container(
+                                        width: 60.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Container(
+                                          width: 42.0,
+                                          height: 42.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(14.0),
+                                          ),
+                                          child: FlutterFlowIconButton(
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            borderRadius: 20.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 40.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            icon: const Icon(
+                                              Icons.auto_fix_high,
+                                              color: Color(0xFFF99302),
+                                              size: 24.0,
+                                            ),
+                                            showLoadingIndicator: true,
+                                            onPressed: () async {
+                                              setState(() {
+                                                FFAppState()
+                                                    .updateUserConfStruct(
+                                                  (e) => e..auto = !e.auto,
+                                                );
+                                              });
+                                              HapticFeedback.heavyImpact();
+                                            },
+                                          ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 6.0, 0.0, 0.0),
-                                        child: Text(
-                                          () {
-                                            if (FFAppState()
-                                                    .shutterState
-                                                    .state ==
-                                                ShutterState.WhiteOpened) {
-                                              return 'En étant face au soleil les faces blanches permettent d\'isoler la chaleur du soleil';
-                                            } else if (FFAppState()
-                                                    .shutterState
-                                                    .state ==
-                                                ShutterState.BlackOpened) {
-                                              return 'En étant face au soleil les faces blanches permettent d\'absorber la chaleur du soleil';
-                                            } else {
-                                              return 'Bloque tout les rayonnement solaire';
-                                            }
-                                          }(),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Rubik',
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 24.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Row(
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(24.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 0.0, 0.0),
+                                            child: Text(
+                                              () {
+                                                if (FFAppState()
+                                                        .shutterState
+                                                        .state ==
+                                                    ShutterState.WhiteOpened) {
+                                                  return 'Refroidissement Passif';
+                                                } else if (FFAppState()
+                                                        .shutterState
+                                                        .state ==
+                                                    ShutterState.BlackOpened) {
+                                                  return 'Rechauffement Passif';
+                                                } else {
+                                                  return 'Volet fermé';
+                                                }
+                                              }(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Rubik',
+                                                        fontSize: 16.0,
+                                                      ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 24.0, 0.0, 0.0),
+                                            child: Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                Container(
-                                                  width: 42.0,
-                                                  height: 42.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            14.0),
-                                                  ),
-                                                  child: FlutterFlowIconButton(
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .warning,
-                                                    borderRadius: 20.0,
-                                                    borderWidth: 1.0,
-                                                    buttonSize: 40.0,
-                                                    fillColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .warning,
-                                                    icon: const Icon(
-                                                      FFIcons.kfireSvgrepoCom,
-                                                      color: Color(0xFFF99302),
-                                                      size: 24.0,
-                                                    ),
-                                                    showLoadingIndicator: true,
-                                                    onPressed: () async {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .updateShutterStateStruct(
-                                                          (e) => e
-                                                            ..state =
-                                                                ShutterState
-                                                                    .BlackOpened,
-                                                        );
-                                                      });
-                                                      HapticFeedback
-                                                          .selectionClick();
-                                                    },
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          6.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    width: 42.0,
-                                                    height: 42.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              14.0),
-                                                    ),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      borderRadius: 20.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 110.0,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .info,
-                                                      icon: const Icon(
-                                                        Icons.severe_cold,
-                                                        color:
-                                                            Color(0xFF50A5E6),
-                                                        size: 24.0,
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: 42.0,
+                                                      height: 42.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(14.0),
                                                       ),
-                                                      onPressed: () async {
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .updateShutterStateStruct(
-                                                            (e) => e
-                                                              ..state =
-                                                                  ShutterState
-                                                                      .WhiteOpened,
-                                                          );
-                                                        });
-                                                        HapticFeedback
-                                                            .selectionClick();
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          6.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    width: 42.0,
-                                                    height: 42.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              14.0),
-                                                    ),
-                                                    child:
-                                                        FlutterFlowIconButton(
-                                                      borderColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      borderRadius: 20.0,
-                                                      borderWidth: 1.0,
-                                                      buttonSize: 40.0,
-                                                      fillColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                      icon: Icon(
-                                                        Icons
-                                                            .close_fullscreen_sharp,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        size: 24.0,
+                                                      child:
+                                                          FlutterFlowIconButton(
+                                                        borderColor: FFAppState()
+                                                                .UserConf
+                                                                .auto
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent1
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .warning,
+                                                        borderRadius: 20.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 40.0,
+                                                        fillColor: FFAppState()
+                                                                .UserConf
+                                                                .auto
+                                                            ? FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent1
+                                                            : FlutterFlowTheme
+                                                                    .of(context)
+                                                                .warning,
+                                                        icon: Icon(
+                                                          FFIcons
+                                                              .kfireSvgrepoCom,
+                                                          color: FFAppState()
+                                                                  .UserConf
+                                                                  .auto
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primaryText
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                          size: 24.0,
+                                                        ),
+                                                        showLoadingIndicator:
+                                                            true,
+                                                        onPressed: () async {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .updateShutterStateStruct(
+                                                              (e) => e
+                                                                ..state =
+                                                                    ShutterState
+                                                                        .BlackOpened,
+                                                            );
+                                                          });
+                                                          HapticFeedback
+                                                              .selectionClick();
+                                                        },
                                                       ),
-                                                      showLoadingIndicator:
-                                                          true,
-                                                      onPressed: () async {
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .updateShutterStateStruct(
-                                                            (e) => e
-                                                              ..state =
-                                                                  ShutterState
-                                                                      .Closed,
-                                                          );
-                                                        });
-                                                        HapticFeedback
-                                                            .selectionClick();
-                                                      },
                                                     ),
-                                                  ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 42.0,
+                                                        height: 42.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      14.0),
+                                                        ),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: FFAppState()
+                                                                  .UserConf
+                                                                  .auto
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .accent1
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                          borderRadius: 20.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 110.0,
+                                                          fillColor: FFAppState()
+                                                                  .UserConf
+                                                                  .auto
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .accent1
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                          icon: Icon(
+                                                            Icons.severe_cold,
+                                                            color: FFAppState()
+                                                                    .UserConf
+                                                                    .auto
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText
+                                                                : const Color(
+                                                                    0xFF50A5E6),
+                                                            size: 24.0,
+                                                          ),
+                                                          onPressed: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .updateShutterStateStruct(
+                                                                (e) => e
+                                                                  ..state =
+                                                                      ShutterState
+                                                                          .WhiteOpened,
+                                                              );
+                                                            });
+                                                            HapticFeedback
+                                                                .selectionClick();
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  6.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 42.0,
+                                                        height: 42.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      14.0),
+                                                        ),
+                                                        child:
+                                                            FlutterFlowIconButton(
+                                                          borderColor: FFAppState()
+                                                                  .UserConf
+                                                                  .auto
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .accent1
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                          borderRadius: 20.0,
+                                                          borderWidth: 1.0,
+                                                          buttonSize: 40.0,
+                                                          fillColor: FFAppState()
+                                                                  .UserConf
+                                                                  .auto
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .accent1
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .error,
+                                                          icon: Icon(
+                                                            Icons
+                                                                .close_fullscreen_sharp,
+                                                            color: FFAppState()
+                                                                    .UserConf
+                                                                    .auto
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText
+                                                                : FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .black600,
+                                                            size: 24.0,
+                                                          ),
+                                                          showLoadingIndicator:
+                                                              true,
+                                                          onPressed: () async {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .updateShutterStateStruct(
+                                                                (e) => e
+                                                                  ..state =
+                                                                      ShutterState
+                                                                          .Closed,
+                                                              );
+                                                            });
+                                                            HapticFeedback
+                                                                .selectionClick();
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

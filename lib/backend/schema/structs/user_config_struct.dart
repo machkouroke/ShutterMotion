@@ -11,9 +11,11 @@ class UserConfigStruct extends BaseStruct {
     TempUnit? tempUnit,
     WindUnit? windUnit,
     String? selectedShutter,
+    bool? auto,
   })  : _tempUnit = tempUnit,
         _windUnit = windUnit,
-        _selectedShutter = selectedShutter;
+        _selectedShutter = selectedShutter,
+        _auto = auto;
 
   // "TempUnit" field.
   TempUnit? _tempUnit;
@@ -33,11 +35,18 @@ class UserConfigStruct extends BaseStruct {
   set selectedShutter(String? val) => _selectedShutter = val;
   bool hasSelectedShutter() => _selectedShutter != null;
 
+  // "auto" field.
+  bool? _auto;
+  bool get auto => _auto ?? true;
+  set auto(bool? val) => _auto = val;
+  bool hasAuto() => _auto != null;
+
   static UserConfigStruct fromMap(Map<String, dynamic> data) =>
       UserConfigStruct(
         tempUnit: deserializeEnum<TempUnit>(data['TempUnit']),
         windUnit: deserializeEnum<WindUnit>(data['WindUnit']),
         selectedShutter: data['SelectedShutter'] as String?,
+        auto: data['auto'] as bool?,
       );
 
   static UserConfigStruct? maybeFromMap(dynamic data) => data is Map
@@ -48,6 +57,7 @@ class UserConfigStruct extends BaseStruct {
         'TempUnit': _tempUnit?.serialize(),
         'WindUnit': _windUnit?.serialize(),
         'SelectedShutter': _selectedShutter,
+        'auto': _auto,
       }.withoutNulls;
 
   @override
@@ -63,6 +73,10 @@ class UserConfigStruct extends BaseStruct {
         'SelectedShutter': serializeParam(
           _selectedShutter,
           ParamType.String,
+        ),
+        'auto': serializeParam(
+          _auto,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -83,6 +97,11 @@ class UserConfigStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        auto: deserializeParam(
+          data['auto'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -93,21 +112,24 @@ class UserConfigStruct extends BaseStruct {
     return other is UserConfigStruct &&
         tempUnit == other.tempUnit &&
         windUnit == other.windUnit &&
-        selectedShutter == other.selectedShutter;
+        selectedShutter == other.selectedShutter &&
+        auto == other.auto;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([tempUnit, windUnit, selectedShutter]);
+      const ListEquality().hash([tempUnit, windUnit, selectedShutter, auto]);
 }
 
 UserConfigStruct createUserConfigStruct({
   TempUnit? tempUnit,
   WindUnit? windUnit,
   String? selectedShutter,
+  bool? auto,
 }) =>
     UserConfigStruct(
       tempUnit: tempUnit,
       windUnit: windUnit,
       selectedShutter: selectedShutter,
+      auto: auto,
     );

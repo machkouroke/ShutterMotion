@@ -207,9 +207,9 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                   .selectedShutter ==
                                               'Volet QIF52'
                                           ? FlutterFlowTheme.of(context)
-                                              .primaryBackground
+                                              .secondary
                                           : FlutterFlowTheme.of(context)
-                                              .secondary,
+                                              .primaryBackground,
                                       boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 12.0,
@@ -300,9 +300,9 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                   .selectedShutter ==
                                               'Volet SAGI53'
                                           ? FlutterFlowTheme.of(context)
-                                              .primaryBackground
+                                              .secondary
                                           : FlutterFlowTheme.of(context)
-                                              .secondary,
+                                              .primaryBackground,
                                       boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 12.0,
