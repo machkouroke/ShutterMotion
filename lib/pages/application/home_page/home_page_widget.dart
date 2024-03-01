@@ -660,15 +660,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         showLoadingIndicator:
                                                             true,
                                                         onPressed: () async {
-                                                          setState(() {
-                                                            FFAppState()
-                                                                .updateShutterStateStruct(
-                                                              (e) => e
-                                                                ..state =
-                                                                    ShutterState
-                                                                        .BlackOpened,
-                                                            );
-                                                          });
+                                                          if (!FFAppState()
+                                                              .UserConf
+                                                              .auto) {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .updateShutterStateStruct(
+                                                                (e) => e
+                                                                  ..state =
+                                                                      ShutterState
+                                                                          .BlackOpened,
+                                                              );
+                                                            });
+                                                          } else {
+                                                            return;
+                                                          }
+
                                                           HapticFeedback
                                                               .selectionClick();
                                                         },
@@ -733,15 +740,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             size: 24.0,
                                                           ),
                                                           onPressed: () async {
-                                                            setState(() {
-                                                              FFAppState()
-                                                                  .updateShutterStateStruct(
-                                                                (e) => e
-                                                                  ..state =
-                                                                      ShutterState
-                                                                          .WhiteOpened,
-                                                              );
-                                                            });
+                                                            if (!FFAppState()
+                                                                .UserConf
+                                                                .auto) {
+                                                              setState(() {
+                                                                FFAppState()
+                                                                    .updateShutterStateStruct(
+                                                                  (e) => e
+                                                                    ..state =
+                                                                        ShutterState
+                                                                            .WhiteOpened,
+                                                                );
+                                                              });
+                                                            } else {
+                                                              return;
+                                                            }
+
                                                             HapticFeedback
                                                                 .selectionClick();
                                                           },
@@ -811,15 +825,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           showLoadingIndicator:
                                                               true,
                                                           onPressed: () async {
-                                                            setState(() {
-                                                              FFAppState()
-                                                                  .updateShutterStateStruct(
-                                                                (e) => e
-                                                                  ..state =
-                                                                      ShutterState
-                                                                          .Closed,
-                                                              );
-                                                            });
+                                                            if (!FFAppState()
+                                                                .UserConf
+                                                                .auto) {
+                                                              setState(() {
+                                                                FFAppState()
+                                                                    .updateShutterStateStruct(
+                                                                  (e) => e
+                                                                    ..state =
+                                                                        ShutterState
+                                                                            .Closed,
+                                                                );
+                                                              });
+                                                            } else {
+                                                              return;
+                                                            }
+
                                                             HapticFeedback
                                                                 .selectionClick();
                                                           },
