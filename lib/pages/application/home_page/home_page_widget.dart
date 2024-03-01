@@ -536,9 +536,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             fillColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
-                                            icon: const Icon(
+                                            icon: Icon(
                                               Icons.auto_fix_high,
-                                              color: Color(0xFFF99302),
+                                              color: FFAppState().UserConf.auto
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .success
+                                                  : FlutterFlowTheme.of(context)
+                                                      .error,
                                               size: 24.0,
                                             ),
                                             showLoadingIndicator: true,
