@@ -29,7 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
-    'imageOnPageLoadAnimation1': AnimationInfo(
+    'imageOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         RotateEffect(
@@ -72,15 +72,16 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
-    'imageOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
+    'imageOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
       effects: [
-        FlipEffect(
+        ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: 1.0,
-          end: 2.0,
+          begin: const Offset(1.0, 1.0),
+          end: const Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -166,6 +167,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -279,7 +287,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       height: 16.0,
                                       fit: BoxFit.cover,
                                     ).animateOnPageLoad(animationsMap[
-                                        'imageOnPageLoadAnimation1']!),
+                                        'imageOnPageLoadAnimation']!),
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           6.0, 0.0, 0.0, 0.0),
@@ -487,8 +495,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           fit: BoxFit.scaleDown,
                                         ),
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'imageOnPageLoadAnimation2']!),
+                                    ).animateOnActionTrigger(
+                                      animationsMap[
+                                          'imageOnActionTriggerAnimation']!,
+                                    ),
                                   ],
                                 ),
                               ),
@@ -563,6 +573,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: const EdgeInsets.all(24.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
