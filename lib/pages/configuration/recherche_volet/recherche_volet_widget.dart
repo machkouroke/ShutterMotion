@@ -234,9 +234,9 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                         .selectedShutter ==
                                                     'Volet QIF52'
                                                 ? FlutterFlowTheme.of(context)
-                                                    .primaryText
+                                                    .white
                                                 : FlutterFlowTheme.of(context)
-                                                    .white,
+                                                    .primaryText,
                                             size: 24.0,
                                           ),
                                         ),
@@ -256,10 +256,10 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                           'Volet QIF52'
                                                       ? FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryText
+                                                          .white
                                                       : FlutterFlowTheme.of(
                                                               context)
-                                                          .white,
+                                                          .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -327,9 +327,9 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                         .selectedShutter ==
                                                     'Volet SAGI53'
                                                 ? FlutterFlowTheme.of(context)
-                                                    .primaryText
+                                                    .white
                                                 : FlutterFlowTheme.of(context)
-                                                    .white,
+                                                    .primaryText,
                                             size: 24.0,
                                           ),
                                         ),
@@ -349,10 +349,10 @@ class _RechercheVoletWidgetState extends State<RechercheVoletWidget>
                                                           'Volet SAGI53'
                                                       ? FlutterFlowTheme.of(
                                                               context)
-                                                          .primaryText
+                                                          .white
                                                       : FlutterFlowTheme.of(
                                                               context)
-                                                          .white,
+                                                          .primaryText,
                                                 ),
                                           ),
                                         ),
